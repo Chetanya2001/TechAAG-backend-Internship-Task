@@ -20,6 +20,9 @@ db.sequelize = sequelize;
 
 // Import models and associate them with Sequelize instance
 db.User = require("./User.model.js")(sequelize, Sequelize);
-
+db.Url = require("./Url.model.js")(sequelize, Sequelize);
+//Relations
+db.User.hasMany(db.Url, { foreignKey: "userId" });
+db.Url.belongsTo(db.User, { foreignKey: "userId" });
 // Export db object
 module.exports = db;

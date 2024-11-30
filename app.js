@@ -6,9 +6,11 @@ const { sequelize } = require("./models"); // Import sequelize instance
 app.use(express.json());
 // Routes
 const userRoute = require("./routes/User.routes.js");
+const urlRoutes = require("./routes/Url.routes.js");
 
 // Using Routes
 app.use("/auth", userRoute);
+app.use("/url", urlRoutes);
 // Sync the models with the database
 sequelize
   .sync({ force: false }) // This syncs the database with your Sequelize models (creates tables if they don't exist)
